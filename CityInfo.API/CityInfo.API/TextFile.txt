@@ -1,0 +1,5 @@
+﻿Advantages of IIS
+Can restart your application
+Provide filtering of requests
+Provide certificates 
+act as reverse proxy server
