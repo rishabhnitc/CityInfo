@@ -14,4 +14,11 @@ namespace CityInfo.API.Models
 
         internal List<PointOfInterestDto> PointsOfInterest { get; set; } = new List<PointOfInterestDto>();
     }
+
+    public class CityDtoWIthoutPOI
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
 }
