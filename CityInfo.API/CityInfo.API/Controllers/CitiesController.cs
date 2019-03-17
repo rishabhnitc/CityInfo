@@ -27,7 +27,8 @@ namespace CityInfo.API.Controllers
             //    );
 
             var cities = _cityInfoRepository.GetCities();
-           var result = cities.Select(c => new CityDtoWIthoutPOI() { Id = c.Id, Description = c.Description, Name = c.Name });
+            var result = AutoMapper.Mapper.Map<IEnumerable<Models.CityDtoWIthoutPOI>>(cities);
+         //  var result = cities.Select(c => new CityDtoWIthoutPOI() { Id = c.Id, Description = c.Description, Name = c.Name });
             return Ok(result);
         }
 
@@ -44,16 +45,17 @@ namespace CityInfo.API.Controllers
            
             if (includePoi)
             {
-                var result = new CityDto() { Id = city.Id, Description = city.Description, Name = city.Name };
-                foreach (var item in city.PointsOfInterest)
-                {
-                    result.PointsOfInterest.Add(new PointOfInterestDto()
-                    {
-                        Id = item.Id,
-                        Name = item.Name,
-                        Description = item.Description
-                    });
-                }
+                var result = AutoMapper.Mapper.Map<CityDto>(city);
+                //var result = new CityDto() { Id = city.Id, Description = city.Description, Name = city.Name };
+                //foreach (var item in city.PointsOfInterest)
+                //{
+                //    result.PointsOfInterest.Add(new PointOfInterestDto()
+                //    {
+                //        Id = item.Id,
+                //        Name = item.Name,
+                //        Description = item.Description
+                //    });
+                //}
                 return Ok(result);
             }
             else
